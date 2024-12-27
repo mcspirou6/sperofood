@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SperoFood - Satisfy Your Cravings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>SperoFood</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Accueil</a>
+            <a href="#menus">Nos Menus</a>
+            <a href="#promotions">Promotions</a>
+            <a href="#about">À propos</a>
+            <a href="#contact">Contact</a>
+            <button class="order-btn">Commander</button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="animated-title">Satisfy Your Cravings</h1>
+            <h2 class="subtitle">Anytime, Anywhere</h2>
+            <div id="threejs-container"></div>
+        </div>
+    </section>
+
+    <section id="menus" class="menus-section">
+        <h2>Nos Menus</h2>
+        <div class="menu-filters">
+            <button class="filter-btn active" data-filter="all">Tout</button>
+            <button class="filter-btn" data-filter="burgers">Burgers</button>
+            <button class="filter-btn" data-filter="pizzas">Pizzas</button>
+            <button class="filter-btn" data-filter="wraps">Wraps</button>
+            <button class="filter-btn" data-filter="drinks">Boissons</button>
+            <button class="filter-btn" data-filter="desserts">Desserts</button>
+        </div>
+        <div class="menu-grid"></div>
+    </section>
+
+    <section id="promotions" class="promotions-section">
+        <h2>Promotions</h2>
+        <div class="promo-carousel">
+            <!-- Les promotions seront ajoutées dynamiquement via JavaScript -->
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>À propos de nous</h2>
+        <div class="timeline"></div>
+        <div id="map-3d"></div>
+    </section>
+
+    <section id="delivery" class="delivery-section">
+        <div class="delivery-content">
+            <h2>Livraison Rapide</h2>
+            <div class="delivery-features">
+                <div class="delivery-feature">
+                    <i class="fas fa-motorcycle"></i>
+                    <h3>Livraison Express</h3>
+                    <p>Livraison en 30 minutes ou remboursé</p>
+                </div>
+                <div class="delivery-feature">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Suivi en Temps Réel</h3>
+                    <p>Suivez votre commande en direct</p>
+                </div>
+                <div class="delivery-feature">
+                    <i class="fas fa-clock"></i>
+                    <h3>24/7</h3>
+                    <p>Service disponible jour et nuit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contactez-nous</h2>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+33 1 23 45 67 89</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>contact@sperofood.com</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-location-dot"></i>
+                    <p>123 Avenue de la Gastronomie<br>75001 Paris</p>
+                </div>
+            </div>
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" required>
+                    <label for="name">Nom</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Email</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="form-group">
+                    <select id="subject" required>
+                        <option value="">Sélectionnez un sujet</option>
+                        <option value="reservation">Réservation</option>
+                        <option value="complaint">Réclamation</option>
+                        <option value="partnership">Partenariat</option>
+                        <option value="other">Autre</option>
+                    </select>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" required></textarea>
+                    <label for="message">Message</label>
+                    <span class="focus-border"></span>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Envoyer</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SperoFood</h3>
+                <p>Découvrez une expérience culinaire unique avec nos menus savoureux et notre service de qualité.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Horaires d'ouverture</h3>
+                <ul class="opening-hours">
+                    <li><span>Lundi - Vendredi:</span> 11h00 - 23h00</li>
+                    <li><span>Samedi:</span> 11h00 - 00h00</li>
+                    <li><span>Dimanche:</span> 12h00 - 22h00</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Inscrivez-vous pour recevoir nos offres exclusives</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre email">
+                    <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <ul class="quick-links">
+                    <li><a href="#menus">Nos Menus</a></li>
+                    <li><a href="#promotions">Promotions</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> 2024 SperoFood – La saveur votre portée</p>
+            <div class="footer-bottom-links">
+                <a href="#">Mentions légales</a>
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">CGV</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animation.js"></script>
+</body>
+</html>
