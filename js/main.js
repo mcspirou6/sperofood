@@ -42,7 +42,52 @@ const menuItems = [
     }
 ];
 
+// Données des promotions
+const promotions = [
+    {
+        id: 1,
+        title: "Menu Duo",
+        description: "2 Burgers + 2 Boissons + 1 Frite géante",
+        originalPrice: "35.98€",
+        discountedPrice: "29.99€",
+        image: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80"
+    },
+    {
+        id: 2,
+        title: "Pizza Party",
+        description: "Pizza XXL + 4 Boissons + 2 Desserts",
+        originalPrice: "42.99€",
+        discountedPrice: "34.99€",
+        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80"
+    },
+    {
+        id: 3,
+        title: "Menu Étudiant",
+        description: "1 Burger + 1 Boisson + 1 Dessert",
+        originalPrice: "18.99€",
+        discountedPrice: "14.99€",
+        image: "https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80"
+    }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Gestion du menu hamburger
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Fermer le menu quand on clique sur un lien
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    });
+
     // Initialisation du menu
     filterMenu('all');
     
@@ -137,6 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Initialisation des promotions
+    initPromotions();
 });
 
 // Fonction de filtrage du menu avec animations
@@ -239,4 +287,42 @@ function showToast(message, type = 'success') {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
     }, 3000);
+}
+
+// Fonction pour initialiser les promotions
+function initPromotions() {
+    const promoCarousel = document.querySelector('.promo-carousel');
+    promoCarousel.innerHTML = '';
+
+    promotions.forEach(promo => {
+        const promoCard = document.createElement('div');
+        promoCard.className = 'promo-card';
+        promoCard.innerHTML = `
+            <img src="${promo.image}" alt="${promo.title}" class="promo-image">
+            <div class="promo-content">
+                <h3 class="promo-title">${promo.title}</h3>
+                <p class="promo-description">${promo.description}</p>
+                <div class="promo-price">
+                    <span class="original-price">${promo.originalPrice}</span>
+                    <span class="discounted-price">${promo.discountedPrice}</span>
+                </div>
+                <button class="add-to-cart" data-id="${promo.id}">
+                    <i class="fas fa-shopping-cart"></i>
+                    Ajouter au panier
+                </button>
+            </div>
+        `;
+
+        promoCard.querySelector('.add-to-cart').addEventListener('click', () => {
+            addToCart(promo);
+        });
+
+        promoCarousel.appendChild(promoCard);
+    });
+}
+
+// Fonction pour ajouter au panier
+function addToCart(item) {
+    showToast(`${item.title} ajouté au panier !`, 'success');
+    // Ici vous pouvez ajouter la logique pour gérer le panier
 }
