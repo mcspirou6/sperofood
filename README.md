@@ -50,4 +50,4 @@ Pour modifier le site :
 
 ## Crédits
 
-Développé par [Votre Nom] - © 2024 SperoFood
+Développé par [Spéro AKPO] - © 2024 SperoFood
